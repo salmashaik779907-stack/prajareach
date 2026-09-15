@@ -1,0 +1,1039 @@
+/* ============================================================
+   PrajaReach — Design System & UI Polish
+   Right Doctor • Right Hospital • Right Time
+   ============================================================ */
+
+:root {
+  --primary-blue: #1d4ed8;
+  --blue: #2563eb;
+  --blue-soft: #eaf2ff;
+
+  --teal: #0f766e;
+  --teal-dark: #0b5d57;
+
+  --primary-green: #15803d;
+  --green: #16a34a;
+  --green-soft: #e8f8ef;
+  --green-text: #123c2a;
+
+  --purple: #7c3aed;
+  --purple-soft: #f1ecfe;
+
+  --orange: #ea580c;
+  --orange-soft: #fff1e6;
+
+  --danger: #dc2626;
+  --danger-dark: #b91c1c;
+  --danger-soft: #fff1f2;
+
+  --bg: #eef6f8;
+  --bg-grad-1: #eef6ff;
+  --bg-grad-2: #eafaf3;
+
+  --card: #ffffff;
+  --text-dark: #0f2333;
+  --text: #334155;
+  --text-muted: #5b6b7c;
+  --border: #e2e8f0;
+
+  --radius: 16px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 4px 14px rgba(15, 35, 51, 0.06);
+  --shadow-md: 0 10px 28px rgba(15, 35, 51, 0.1);
+  --shadow-lg: 0 18px 40px rgba(15, 35, 51, 0.14);
+
+  --sans: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+  background-attachment: fixed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+/* ============================================================
+   Brand logo
+   ============================================================ */
+
+.brand-logo {
+  width: 90px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-logo-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--teal);
+  color: #ffffff;
+  flex: 0 0 auto;
+}
+
+/* ============================================================
+   Role selection page
+   ============================================================ */
+
+.role-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+  padding: 48px 20px;
+}
+
+.role-container {
+  max-width: 1050px;
+  margin: auto;
+  text-align: center;
+}
+
+.role-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-logo .brand-logo {
+  width: 118px;
+}
+
+.role-logo h1 {
+  margin: 4px 0 0;
+  font-size: 32px;
+  color: var(--text-dark);
+}
+
+.role-logo p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.sih-badge {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--primary-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.role-heading {
+  margin: 40px 0 28px;
+}
+
+.role-heading h2 {
+  font-size: 34px;
+  margin: 0 0 8px;
+  color: var(--text-dark);
+}
+
+.role-heading p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.role-card {
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  background: var(--card);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.role-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.role-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.role-card h3 {
+  font-size: 21px;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+}
+
+.role-card p {
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+  min-height: 46px;
+}
+
+.role-card span {
+  display: block;
+  margin-top: 18px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.role-card.patient {
+  border-color: #bfdbfe;
+}
+.role-card.patient .role-icon {
+  background: #dbeafe;
+  color: var(--blue);
+}
+.role-card.patient span {
+  color: var(--blue);
+}
+
+.role-card.hospital {
+  border-color: #bbf7d0;
+}
+.role-card.hospital .role-icon {
+  background: var(--green-soft);
+  color: var(--primary-green);
+}
+.role-card.hospital span {
+  color: var(--primary-green);
+}
+
+.role-card.government {
+  border-color: #99f6e4;
+}
+.role-card.government .role-icon {
+  background: #ccfbf1;
+  color: var(--teal);
+}
+.role-card.government span {
+  color: var(--teal);
+}
+
+.role-card.emergency {
+  border-color: #fecaca;
+}
+.role-card.emergency .role-icon {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.role-card.emergency span {
+  color: var(--danger);
+}
+
+.role-card.tele {
+  border-color: #ddd6fe;
+}
+.role-card.tele .role-icon {
+  background: var(--purple-soft);
+  color: var(--purple);
+}
+.role-card.tele span {
+  color: var(--purple);
+}
+
+.role-footer {
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+.role-footer strong {
+  color: var(--teal);
+}
+
+.role-footer p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ============================================================
+   App shell + header
+   ============================================================ */
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+  padding-bottom: 56px;
+  overflow-x: hidden;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.logo h1 {
+  font-size: 23px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.logo p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: var(--blue-soft);
+  transform: translateY(-1px);
+}
+
+.main {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.welcome {
+  margin-bottom: 26px;
+}
+
+.welcome span {
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--primary-blue);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.welcome h2 {
+  font-size: 30px;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+}
+
+.welcome p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section-head {
+  margin: 34px 0 16px;
+}
+
+.section-head h2 {
+  font-size: 20px;
+  color: var(--text-dark);
+  margin: 0 0 3px;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ============================================================
+   Service grid + cards
+   ============================================================ */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* With 5 services, balance the final row by letting the last card span full width. */
+.services .service-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card > div:last-child {
+  min-width: 0;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin: 0 0 4px;
+}
+
+.service-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 2px 0;
+  overflow-wrap: anywhere;
+}
+
+.service-icon {
+  flex: 0 0 auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: var(--text);
+}
+
+.service-card.blue .service-icon {
+  background: #dbeafe;
+  color: var(--blue);
+}
+
+.service-card.green .service-icon {
+  background: #d1fae5;
+  color: var(--primary-green);
+}
+
+.service-card.purple .service-icon {
+  background: var(--purple-soft);
+  color: var(--purple);
+}
+
+.service-card.red .service-icon {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.service-card.orange .service-icon {
+  background: var(--orange-soft);
+  color: var(--orange);
+}
+
+.service-card.teal .service-icon {
+  background: #ccfbf1;
+  color: var(--teal);
+}
+
+/* ============================================================
+   Quick Health Support
+   ============================================================ */
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.quick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-card h3 {
+  font-size: 15px;
+  color: var(--text-dark);
+  margin: 0 0 3px;
+}
+
+.quick-card p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.quick-icon {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: var(--text);
+}
+
+.quick-card.blue .quick-icon {
+  background: #dbeafe;
+  color: var(--blue);
+}
+.quick-card.red .quick-icon {
+  background: #fee2e2;
+  color: var(--danger);
+}
+.quick-card.orange .quick-icon {
+  background: var(--orange-soft);
+  color: var(--orange);
+}
+.quick-card.teal .quick-icon {
+  background: #ccfbf1;
+  color: var(--teal);
+}
+.quick-card.purple .quick-icon {
+  background: var(--purple-soft);
+  color: var(--purple);
+}
+
+/* ============================================================
+   PrajaReach Support strip (informational, not buttons)
+   ============================================================ */
+
+.support-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: #f6fbfd;
+  border: 2px solid var(--border);
+}
+
+.support-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.support-item h4 {
+  font-size: 14px;
+  color: var(--text-dark);
+  margin: 0 0 2px;
+}
+
+.support-item p {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ============================================================
+   Status badges
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge.success {
+  background: #d1fae5;
+  color: var(--green-text);
+}
+
+.badge.danger {
+  background: #fee2e2;
+  color: var(--danger-dark);
+}
+
+.badge.info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge.pending {
+  background: var(--orange-soft);
+  color: #9a3412;
+}
+
+.service-card .badge {
+  margin: 4px 6px 4px 0;
+}
+
+.service-card button + button {
+  margin-left: 8px;
+}
+
+/* ============================================================
+   Emergency box
+   ============================================================ */
+
+.emergency-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  border: 2px solid #fecaca;
+}
+
+.emergency-box strong {
+  color: var(--danger-dark);
+  font-size: 17px;
+}
+
+.emergency-box p {
+  color: #7f1d1d;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.emergency-box button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  border: none;
+  background: var(--danger);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.emergency-box button:hover {
+  background: var(--danger-dark);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Search
+   ============================================================ */
+
+.search-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-wrap .search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 15px 16px 15px 48px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-wrap input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+}
+
+/* ============================================================
+   Forms
+   ============================================================ */
+
+.field-label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.text-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.text-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.chip {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--teal);
+}
+
+.chip.active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #ffffff;
+}
+
+/* ============================================================
+   Buttons inside cards / main
+   ============================================================ */
+
+.service-card button,
+.main button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  border: none;
+  background: var(--teal);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.service-card button:hover,
+.main button:hover {
+  background: var(--teal-dark);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Mic button (444)
+   ============================================================ */
+
+.mic-btn {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: none;
+  background: var(--purple);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.32);
+  transition: transform 0.2s ease;
+}
+
+.mic-btn:hover {
+  transform: scale(1.05);
+}
+
+.mic-btn.listening {
+  background: var(--danger);
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+/* ============================================================
+   Misc
+   ============================================================ */
+
+.prototype-note {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .main {
+    padding: 26px 18px;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .support-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services,
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services .service-card:last-child {
+    grid-column: auto;
+  }
+
+  .welcome h2 {
+    font-size: 25px;
+  }
+
+  .header {
+    padding: 14px 16px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .brand-logo {
+    width: 78px;
+  }
+
+  .role-logo .brand-logo {
+    width: 100px;
+  }
+
+  .role-heading h2 {
+    font-size: 28px;
+  }
+
+  .role-page {
+    padding: 32px 16px;
+  }
+
+  .emergency-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .emergency-box button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px 14px;
+  }
+
+  .welcome h2 {
+    font-size: 22px;
+  }
+
+  .welcome p {
+    font-size: 15px;
+  }
+
+  .service-card {
+    padding: 16px;
+    gap: 13px;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .role-card {
+    padding: 20px;
+  }
+
+  .role-card p {
+    min-height: 0;
+  }
+
+  .header {
+    padding: 12px 14px;
+  }
+
+  .brand-logo {
+    width: 68px;
+  }
+
+  .nav-btn {
+    padding: 9px 13px;
+    font-size: 13px;
+  }
+
+  .service-card button,
+  .main button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mic-btn {
+    width: 76px;
+    height: 76px;
+  }
+}
