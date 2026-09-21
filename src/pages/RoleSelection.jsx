@@ -4,184 +4,136 @@ import {
   Building2,
   Ambulance,
   PhoneCall,
-  HeartPulse,
+  Languages,
+  Mic,
+  WifiOff,
 } from "lucide-react";
 
 import BrandLogo from "../components/BrandLogo";
 import "../styles.css";
 
 function RoleSelection({ onSelect }) {
+  const roles = [
+    {
+      key: "patient",
+      className: "patient",
+      icon: <UserRound size={30} />,
+      title: "Patient",
+      desc: "Find doctors, hospitals & medicines",
+      chips: ["Find Healthcare", "Book Token", "Medicines"],
+      cta: "Continue as Patient",
+    },
+    {
+      key: "hospital",
+      className: "hospital",
+      icon: <Hospital size={30} />,
+      title: "Hospital / Staff",
+      desc: "Manage doctors, schedules & patients",
+      chips: ["Doctors", "Schedules", "Patients"],
+      cta: "Continue as Hospital",
+    },
+    {
+      key: "government",
+      className: "government",
+      icon: <Building2 size={30} />,
+      title: "Government",
+      desc: "Monitor healthcare services & reports",
+      chips: ["Reports", "Hospitals", "Shortages"],
+      cta: "Continue as Government",
+    },
+    {
+      key: "emergency",
+      className: "emergency",
+      icon: <Ambulance size={30} />,
+      title: "Emergency",
+      desc: "Get urgent healthcare assistance",
+      chips: ["Ambulance", "Emergency Hospital", "Blood Bank"],
+      cta: "Get Emergency Help",
+    },
+    {
+      key: "444",
+      className: "tele",
+      icon: <PhoneCall size={30} />,
+      title: "444 Health Assistance",
+      desc: "Get simple healthcare guidance",
+      chips: ["Voice Help", "Local Language", "Basic Guidance"],
+      cta: "Start 444 Assistance",
+    },
+  ];
+
+  const support = [
+    { icon: <Languages />, label: "Local Languages" },
+    { icon: <Mic />, label: "Voice Assistance" },
+    { icon: <WifiOff />, label: "Basic Offline Support" },
+    { icon: <Ambulance />, label: "Emergency Support" },
+  ];
 
   return (
-
     <div className="role-page">
-
       <div className="role-container">
-
         <div className="role-logo">
-
           <BrandLogo />
-
           <h1>PrajaReach</h1>
-
-          <p>
+          <p className="role-tagline">
             Right Doctor • Right Hospital • Right Time
           </p>
-
         </div>
 
-        <div className="sih-badge">
-          SIH 2026 • HealthTech
-        </div>
+        <div className="sih-badge">SIH 2026 • HealthTech</div>
 
         <div className="role-heading">
-
           <h2>Welcome to PrajaReach</h2>
-
-          <p>
-            Choose how you want to continue
+          <p className="role-subtitle">
+            Connecting Patients, Hospitals & Government
           </p>
-
         </div>
 
         <div className="role-grid">
+          {roles.map((role) => (
+            <button
+              key={role.key}
+              className={`role-card ${role.className}`}
+              onClick={() => onSelect(role.key)}
+            >
+              <div className="role-icon">{role.icon}</div>
 
-          {/* Patient */}
+              <h3>{role.title}</h3>
+              <p>{role.desc}</p>
 
-          <button
-            className="role-card patient"
-            onClick={() => onSelect("patient")}
-          >
+              <div className="role-chips">
+                {role.chips.map((chip) => (
+                  <span className="role-chip" key={chip}>
+                    {chip}
+                  </span>
+                ))}
+              </div>
 
-            <div className="role-icon">
-              <UserRound size={32} />
-            </div>
+              <span className="role-cta">{role.cta} →</span>
+            </button>
+          ))}
+        </div>
 
-            <h3>Patient</h3>
-
-            <p>
-              Find doctors, hospitals and healthcare services.
-            </p>
-
-            <span>
-              Continue as Patient →
-            </span>
-
-          </button>
-
-          {/* Hospital */}
-
-          <button
-            className="role-card hospital"
-            onClick={() => onSelect("hospital")}
-          >
-
-            <div className="role-icon">
-              <Hospital size={32} />
-            </div>
-
-            <h3>Hospital / Staff</h3>
-
-            <p>
-              Manage doctors, schedules, patients and services.
-            </p>
-
-            <span>
-              Continue as Hospital →
-            </span>
-
-          </button>
-
-          {/* Government */}
-
-          <button
-            className="role-card government"
-            onClick={() => onSelect("government")}
-          >
-
-            <div className="role-icon">
-              <Building2 size={32} />
-            </div>
-
-            <h3>Government</h3>
-
-            <p>
-              Monitor healthcare services, hospitals,
-              shortages and emergencies.
-            </p>
-
-            <span>
-              Continue as Government →
-            </span>
-
-          </button>
-
-          {/* Emergency */}
-
-          <button
-            className="role-card emergency"
-            onClick={() => onSelect("emergency")}
-          >
-
-            <div className="role-icon">
-              <Ambulance size={32} />
-            </div>
-
-            <h3>Emergency</h3>
-
-            <p>
-              Get urgent healthcare assistance quickly.
-            </p>
-
-            <span>
-              Get Emergency Help →
-            </span>
-
-          </button>
-
-          {/* 444 */}
-
-          <button
-            className="role-card tele"
-            onClick={() => onSelect("444")}
-          >
-
-            <div className="role-icon">
-              <PhoneCall size={32} />
-            </div>
-
-            <h3>444 Health Assistance</h3>
-
-            <p>
-              Get voice-based healthcare assistance
-              from any phone.
-            </p>
-
-            <span>
-              Start 444 Assistance →
-            </span>
-
-          </button>
-
+        <div className="role-support">
+          <h3>PrajaReach Support</h3>
+          <div className="role-support-grid">
+            {support.map((item) => (
+              <div className="role-support-item" key={item.label}>
+                <span className="role-support-icon">{item.icon}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="role-footer">
-
-          <strong>
-            No smartphone? No internet? No problem.
-          </strong>
-
+          <strong>No smartphone? No internet? No problem.</strong>
           <p>
-            PrajaReach connects patients, hospitals,
-            government and emergency healthcare support.
+            PrajaReach connects patients, hospitals, government and emergency
+            healthcare support.
           </p>
-
         </div>
-
       </div>
-
     </div>
-
   );
 }
 
