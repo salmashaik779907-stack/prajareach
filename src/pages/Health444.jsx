@@ -15,21 +15,41 @@ import "../styles.css";
 const LANGUAGES = ["English", "हिन्दी", "తెలుగు", "தமிழ்", "ಕನ್ನಡ"];
 
 const HELP_OPTIONS = [
-  { key: "symptom", title: "Check Symptoms", desc: "Get basic guidance on common symptoms.", icon: <Stethoscope /> },
-  { key: "medicine", title: "Medicine Help", desc: "Ask about medicine availability.", icon: <Pill /> },
-  { key: "hospital", title: "Find a Hospital", desc: "Locate the nearest hospital.", icon: <HeartPulse /> },
-  { key: "emergency", title: "Emergency", desc: "Connect to emergency assistance.", icon: <Ambulance /> },
+  {
+    key: "symptom",
+    title: "General Symptom Guidance",
+    desc: "Read general comfort and monitoring information.",
+    icon: <Stethoscope />,
+  },
+  {
+    key: "medicine",
+    title: "Medicine Information",
+    desc: "Find demo listings and learn safe next steps.",
+    icon: <Pill />,
+  },
+  {
+    key: "hospital",
+    title: "Find a Hospital",
+    desc: "Search demo hospitals, services and directions.",
+    icon: <HeartPulse />,
+  },
+  {
+    key: "emergency",
+    title: "Emergency Support",
+    desc: "Open the existing emergency support page.",
+    icon: <Ambulance />,
+  },
 ];
 
 const GUIDANCE = {
   symptom:
-    "For fever, drink fluids and rest. If fever lasts more than 3 days or is very high, visit a doctor.",
+    "General information only: rest, drink fluids and monitor symptoms. This is not a diagnosis. Contact a qualified clinician for persistent, severe or worsening symptoms.",
   medicine:
-    "Tell us the medicine name and we will check availability at nearby hospitals and pharmacies.",
+    "Use Medicine Search to view illustrative listings. Do not start, stop or change a medicine without advice from a qualified clinician or pharmacist.",
   hospital:
-    "The nearest hospitals are Praja General Hospital (Kurnool) and Rural Health Centre (Anantapur).",
+    "Use Find Healthcare to search demo hospitals and check listed services. Confirm details directly with the hospital before travelling.",
   emergency:
-    "For emergencies, call 108 immediately. An ambulance can be requested from the Emergency section.",
+    "For immediate danger, contact your local emergency services. The button below opens the existing Emergency page; this prototype is not a live emergency dispatch service.",
 };
 
 function Health444({ onNavigate, onChangeRole }) {
@@ -38,6 +58,10 @@ function Health444({ onNavigate, onChangeRole }) {
   const [response, setResponse] = useState("");
 
   function handleOption(key) {
+    if (key === "emergency") {
+      if (onNavigate) onNavigate("emergency");
+      return;
+    }
     setResponse(GUIDANCE[key]);
   }
 
@@ -77,24 +101,27 @@ function Health444({ onNavigate, onChangeRole }) {
 
       <main className="main">
         <section className="welcome">
-          <span>Voice-based Healthcare</span>
+          <span>Prototype Health Help</span>
           <h2>444 Health Assistance</h2>
           <p>
-            Get healthcare help from any phone — no smartphone or internet
-            required.
+            Explore simple, general health-guidance categories. This interface
+            does not diagnose conditions or replace a qualified healthcare professional.
           </p>
         </section>
 
         <div className="emergency-box">
           <div>
-            <strong>📞 Call 444 for health assistance</strong>
-            <p>Available in multiple local languages.</p>
+            <strong>📞 444 Health Help</strong>
+            <p>Prototype interface for general guidance. No live call or emergency service is connected here.</p>
           </div>
-          <a href="tel:444">
-            <button>
-              <PhoneCall size={16} /> Call 444
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <button type="button" onClick={() => onNavigate && onNavigate("emergency")}>
+              <Ambulance size={16} /> Open Emergency Support
             </button>
-          </a>
+            <a className="nav-btn" href="tel:444">
+              <PhoneCall size={16} /> Call 444
+            </a>
+          </div>
         </div>
 
         <section style={{ marginTop: "25px" }}>
