@@ -15,79 +15,90 @@ import {
 import BrandLogo from "../components/BrandLogo";
 import "../styles.css";
 
+const services = [
+  {
+    key: "find",
+    title: "Find Doctor / Hospital",
+    desc: "Search nearby facilities, doctors, specialties and availability.",
+    icon: <Search />,
+    color: "blue",
+  },
+  {
+    key: "booking",
+    title: "Appointment Access",
+    desc: "Choose a date and time, then get a demo booking token.",
+    icon: <CalendarDays />,
+    color: "green",
+  },
+  {
+    key: "medicine",
+    title: "Medicine Search",
+    desc: "Search demo medicine availability by name or category.",
+    icon: <Pill />,
+    color: "teal",
+  },
+  {
+    key: "emergency",
+    title: "Emergency Support",
+    desc: "Open the existing emergency support and ambulance request page.",
+    icon: <Ambulance />,
+    color: "red",
+  },
+  {
+    key: "444",
+    title: "444 Health Help",
+    desc: "Open simple, general health-guidance categories.",
+    icon: <PhoneCall />,
+    color: "purple",
+  },
+];
+
+const quickActions = [
+  {
+    key: "find",
+    title: "Check Doctor Availability",
+    desc: "Compare demo doctors, specialties and appointment windows.",
+    icon: <Hospital />,
+    color: "orange",
+  },
+  {
+    key: "emergency",
+    title: "Blood Bank Search",
+    desc: "Check demo blood-group availability on the emergency page.",
+    icon: <Droplet />,
+    color: "red",
+  },
+  {
+    key: "find",
+    title: "Get Directions",
+    desc: "Open directions to a hospital from the healthcare results.",
+    icon: <Navigation />,
+    color: "blue",
+  },
+  {
+    key: "444",
+    title: "444 Health Help",
+    desc: "Browse general health-guidance categories.",
+    icon: <PhoneCall />,
+    color: "purple",
+  },
+];
+
+const patientSteps = [
+  { number: "1", title: "Find", desc: "Search a hospital, doctor or specialty." },
+  { number: "2", title: "Check", desc: "Review hospital details and availability." },
+  { number: "3", title: "Book", desc: "Select a date and time for your visit." },
+  { number: "4", title: "Token", desc: "Receive a demo appointment confirmation." },
+];
+
+const supportItems = [
+  { title: "Local Languages", desc: "Guidance labels in familiar languages", icon: <Languages /> },
+  { title: "Voice Assistance", desc: "Prototype speech preview", icon: <Mic /> },
+  { title: "Basic Offline Info", desc: "Simple help without a live connection", icon: <WifiOff /> },
+  { title: "Emergency Support", desc: "Quick access to the emergency page", icon: <Ambulance /> },
+];
+
 function Home({ onNavigate, onChangeRole }) {
-  // The 5 core services. Keys map to existing routes in App.jsx.
-  const services = [
-    {
-      key: "find",
-      title: "Find Healthcare",
-      desc: "Hospitals, doctors and services near you.",
-      icon: <Search />,
-      color: "blue",
-    },
-    {
-      key: "booking",
-      title: "Book Appointment",
-      desc: "Reserve a doctor slot and get a token.",
-      icon: <CalendarDays />,
-      color: "green",
-    },
-    {
-      key: "medicine",
-      title: "Medicine Search",
-      desc: "Check medicine availability at hospitals.",
-      icon: <Pill />,
-      color: "teal",
-    },
-    {
-      key: "emergency",
-      title: "Emergency Support",
-      desc: "Request an ambulance and emergency help.",
-      icon: <Ambulance />,
-      color: "red",
-    },
-    {
-      key: "444",
-      title: "444 Health Assistance",
-      desc: "Voice-based help from any phone.",
-      icon: <PhoneCall />,
-      color: "purple",
-    },
-  ];
-
-  // Quick actions that connect to existing pages only.
-  const quickActions = [
-    {
-      key: "find",
-      title: "Nearby Emergency Hospital",
-      desc: "Locate the closest emergency-ready hospital.",
-      icon: <Hospital />,
-      color: "orange",
-    },
-    {
-      key: "emergency",
-      title: "Blood Bank Search",
-      desc: "Check blood group availability nearby.",
-      icon: <Droplet />,
-      color: "red",
-    },
-    {
-      key: "find",
-      title: "Get Directions",
-      desc: "Open directions to a hospital or service.",
-      icon: <Navigation />,
-      color: "blue",
-    },
-  ];
-
-  // Informational support items (not buttons).
-  const supportItems = [
-    { title: "Local Languages", desc: "Help in your language", icon: <Languages /> },
-    { title: "Voice Assistance", desc: "Speak to get help", icon: <Mic /> },
-    { title: "Basic Offline Info", desc: "Works without internet", icon: <WifiOff /> },
-    { title: "Emergency Support", desc: "24×7 assistance", icon: <Ambulance /> },
-  ];
-
   return (
     <div className="app">
       <header className="header">
@@ -110,8 +121,8 @@ function Home({ onNavigate, onChangeRole }) {
           <span>Patient Dashboard</span>
           <h2>Welcome to PrajaReach</h2>
           <p>
-            Your gateway to nearby hospitals, doctors, medicines and emergency
-            help — online or from any phone, even without internet.
+            Find nearby care, check demo availability, book an appointment and
+            get a simple confirmation from one patient dashboard.
           </p>
         </section>
 
@@ -133,6 +144,23 @@ function Home({ onNavigate, onChangeRole }) {
                 <p>{service.desc}</p>
               </div>
             </button>
+          ))}
+        </section>
+
+        <div className="section-head">
+          <h2>Your care journey</h2>
+          <p>Follow these steps to complete a demo appointment.</p>
+        </div>
+
+        <section className="quick-grid" aria-label="Patient booking steps">
+          {patientSteps.map((step) => (
+            <div className="quick-card blue" key={step.number}>
+              <div className="quick-icon">{step.number}</div>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            </div>
           ))}
         </section>
 
@@ -175,14 +203,20 @@ function Home({ onNavigate, onChangeRole }) {
 
         <section className="emergency-box" style={{ marginTop: "28px" }}>
           <div>
-            <strong>🚨 In an emergency? Call 108 now</strong>
-            <p>24×7 ambulance and emergency response support.</p>
+            <strong>🚨 Need urgent help?</strong>
+            <p>
+              Open the demo emergency support page for available options. For
+              immediate danger, contact your local emergency services.
+            </p>
           </div>
-          <a href="tel:108">
-            <button>
-              <PhoneCall size={16} /> Call 108
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <button type="button" onClick={() => onNavigate("emergency")}>
+              <Ambulance size={16} /> Emergency Support
             </button>
-          </a>
+            <a className="nav-btn" href="tel:108">
+              <PhoneCall size={16} /> Call 108
+            </a>
+          </div>
         </section>
 
         <p className="prototype-note">
