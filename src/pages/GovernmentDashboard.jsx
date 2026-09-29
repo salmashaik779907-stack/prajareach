@@ -355,6 +355,58 @@ function GovernmentDashboard({ onChangeRole }) {
           )}
 
         </section>
+        {/* Healthcare Data Summary */}
+
+        <section style={{ marginTop: "35px" }}>
+
+          <h2>Healthcare Data Summary</h2>
+
+          <div className="services">
+
+            <div className="service-card blue">
+              <div className="service-icon">
+                <Building2 />
+              </div>
+              <div>
+                <h3>Hospital Coverage</h3>
+                <p>{hospitals.length} hospitals are registered in the system.</p>
+              </div>
+            </div>
+
+            <div className="service-card green">
+              <div className="service-icon">
+                <Users />
+              </div>
+              <div>
+                <h3>Doctor Availability</h3>
+                <p>{availableDoctors.length} doctors are currently available.</p>
+              </div>
+            </div>
+
+            <div className="service-card purple">
+              <div className="service-icon">
+                <Pill />
+              </div>
+              <div>
+                <h3>Medicine Availability</h3>
+                <p>{availableMedicines.length} medicines are currently available.</p>
+              </div>
+            </div>
+
+            <div className="service-card red">
+              <div className="service-icon">
+                <Ambulance />
+              </div>
+              <div>
+                <h3>Emergency Status</h3>
+                <p>{pendingEmergencies.length} emergency requests require attention.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
 
       </main>
 
